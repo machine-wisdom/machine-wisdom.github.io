@@ -23,8 +23,8 @@ theme = "hugo-creative-theme"
 
 	# To provide some metadata for search engines feel free to add a few
     # information about you and your website.
-	name = "Younes Abouelnagah"
-	description = ""
+	name = "Machine Wisdom"
+	description = "Machine Learning, Artificial Intelligence, Distributed Systems, Big Data, and all the things that Younes Abouelnagah loves."
 
 	# The path must be relative to the static folder
 	# favicon = "favicon.ico"
@@ -32,12 +32,12 @@ theme = "hugo-creative-theme"
 
 	# Navigation
 	[params.navigation]
-		brand = "Hugo Creative Theme"
+		brand = "Machine Wisdom"
 
 		[params.navigation.links]
 			about     = "About"
-			services  = "Services"
-			portfolio = "Portfolio"
+			services  = "Recent Posts"
+			portfolio = "Browse"
 			contact   = "Contact"
 
 
@@ -99,7 +99,7 @@ theme = "hugo-creative-theme"
 	# Contact section
 	[params.contact]
 		headline = "Let's Get In Touch!"
-		description = "Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!"
-		phone = "123-456-6789"
-		email = "feedback@startbootstrap.com"
+		description = ""
+		phone = "519-498-5438"
+		email = "Y O U N E S [at] machine-wisdom.com"
 

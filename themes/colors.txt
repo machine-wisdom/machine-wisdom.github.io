@@ -1,0 +1,3 @@
+orange: #f05f40 #666e97 #afadaf
+teal: #6882a3 #3c587b #3c587b
+offwhite: #afadaf
