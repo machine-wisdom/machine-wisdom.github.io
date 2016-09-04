@@ -1,0 +1,53 @@
+---
+
+baseurl:            http://blog.machine-wisdom.com/
+pygmentsuseclasses: true 
+theme:              hugo-incorporated
+
+params:
+  inc:
+    # Blog Information
+    title:        "Machine Wisdom"
+    subtitle:     "Machine Learning, Artificial Intelligence, Distributed Systems, Big Data, and all those topics we are passionate about at Machine Wisdom."
+    cover_image:  blog-cover.jpg
+    logo:         logo.png
+    
+    # Company information
+    company:      Machine Wisdom
+    url:          http://www.machine-wisdom.com/
+    #    facebook:     
+    github:       machine-wisdom
+    twitter:      machinewisdom
+    #    gplus:        ''
+    about_link:   "http://www.machine-wisdom.com/#services"
+    
+    # Product Information
+    product_link: http://www.machine-wisdom.com/
+    tagline:      "Coming up nil for quite some time."
+    
+    # Comments
+    disqus:
+      # Set a shortname to enable disqus comments
+      #      shortname:  false
+    
+    # Sharing settings
+    sharing:
+      twitter:    true
+      facebook:   true
+      gplus:      true
+      hn:         true
+      
+    
+   # Analytics     
+    analytics:
+#      googleid: UA-00000000-0
+#      piwik:
+#        domain: piwik.example.com
+#        siteid: 0
+        
+    # Google Fonts
+    # eg. 'Droid+Sans:400,700|Droid+Serif:400,700'
+    google_font: 'Droid+Sans:400,700'
+    
+    # Setup your fonts, colors etc at _assets/stylesheets/main.scss
+...
