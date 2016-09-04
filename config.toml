@@ -24,7 +24,7 @@ theme = "hugo-creative-theme"
 	# To provide some metadata for search engines feel free to add a few
     # information about you and your website.
 	name = "Machine Wisdom"
-	description = "Machine Learning, Artificial Intelligence, Distributed Systems, Big Data, and all the computer topics that Younes Abouelnagah and Nada Elasal love."
+	description = "Machine Learning, Artificial Intelligence, Distributed Systems, Big Data, and all the computer science topics that Younes Abouelnagah and Nada Elasal love."
 
 	# The path must be relative to the static folder
 	# favicon = "favicon.ico"
@@ -44,28 +44,32 @@ theme = "hugo-creative-theme"
 	[params.hero]
 		# To change the background of the hero section, replace the 'header.jpg' at './static/img' with your own.
 		slogan     = "Machine Wisdom"
-		subtitle   = "To be wise is to find patterns in what has past to foresee what is yet to become.<br/>To be consious of such patterns, wise people spend a lot of time contemplating and patiently exercising loops of thought that takes them from one idea to another.<br/>A computer program can exercise billions of loops in a single wall clock second, allowing it to go through an amount of data that would take years for a human to read. This is the edge machines have in terms of wisdom; they are fast and they do not know boredom."
+		subtitle   = "To be wise is to find patterns in what has past to foresee what is yet to become.<br/>To be conscious of such patterns, wise people spend a lot of time contemplating and patiently exercising loops of thought that takes them from one idea to another.<br/>A computer program can exercise billions of loops in a single wall clock second, allowing it to go through an amount of data that would take years for a human to read. This is the edge machines have in terms of wisdom; they are fast and they do not know boredom."
 		buttonText = "Read more"
 
 
 	# About section
 	[params.about]
 		headline    = "About Machine Learning"
-		description = "Machines do not have any edge in terms of cognitive capacity, because it is us humans who have to tell them what to do in each iteration of the loop in order to make any progress. Even the notion of progress has to be simplified in order for machines to comprehend it. Machines, of the Von Nueman sort currently prevalent, can only deal with numbers and they are very clever when it comes to comparing something to zero. Humans deviced a mathematical trick to allow machines to comprehend progress, only if the goal is to minimize a particular outcome function. This trick is called convex optimization, and it is at the heart of almost all methods that allow machines to learn something from data."
-		buttonText  = "What loop?"
+		description = "Machines do not have any edge in terms of cognitive capacity, because it is us humans who have to tell them what to do in each iteration of the loop in order to make any progress. Even the notion of progress has to be simplified in order for machines to comprehend it. Machines, of the Von Neumann sort currently prevalent, can only deal with numbers and they are very clever when it comes to comparing something to zero. Humans devised a mathematical trick to allow machines to comprehend progress, only if the goal is to minimize a particular outcome function. This trick is called convex optimization, and it is at the heart of almost all methods that allow machines to learn something from data."
+		button1Text  = "What loop?"
+		button1Link = "#page-top"
+		button2Text  = "Browse Topics"
+		button2Link = "#portfolio"
+		
 
 
     # Portfolio modals
 	[params.portfolio.modal]
-        client = "Client"
-        date = "Date"
+        discipline = "Discipline"
+        level = "Level"
         category = "Category"
         buttonText = "Close"
 
     # Aside section
 	[params.aside]
 		headline = "MISR: The Machine Intelligence Solutions Repository"
-		text="We maintain [a GitHub repository with the Machine Intelligence Solutions](//github.com/machine-wisdom/misr) that we come accross. Each solution has code and documentation, and should ideally be a template that can be readily reused. We welcome your contributions!"
+		text="We maintain [a GitHub repository with the Machine Intelligence Solutions](//github.com/machine-wisdom/misr) that we come across. Each solution has code and documentation, and should ideally be a template that can be readily reused. We welcome your contributions!"
 
 		[params.aside.button]
 			text = "Contribute"

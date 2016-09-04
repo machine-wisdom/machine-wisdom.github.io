@@ -1,0 +1,30 @@
+modalID: 6
+title: "Buzz, Hype and the Press"
+level: Beginner
+img: editorials.jpg
+category: Editorials
+categoryLink: "#contact"
+discipline: Managing Expectations
+description: >
+  I intentionally use "machine wisdom applications"
+  as if it is really something, in a tongue-in-cheek fashion. 
+  I don't want to coin a term, but I also hope that you have found
+  it as acceptable as "machine intelligence", "artificial intelligence",
+  "machine cognition", or any other such terms that we learned to accept.
+  I believe that "wisdom" is more accurate than "intelligence" for
+  describing the cognitive capacity of machines, or rather the lack 
+  thereof. I love artificial intelligence, machine learning, data mining, 
+  statistical modeling, and whatever else you could call the 
+  family of algorithms that leads to getting machines to do something
+  that the programmer did not actually code. I don't care what 
+  they are called as long as people realize they are just metaphors.
+  It helps if people remember that all such algorithms can very
+  easily fall into the pitfall of "over fitting" the training data,
+  which renders what they learn useless when they are evaluated on 
+  new data points. Much like a wise shaman who has never left the village,
+  and while the wisdom is perfect for leading life in the village
+  it is not generally applicable. The difference is that the shaman
+  has intelligence and may be able to rectify the wisdom to be
+  more applicable to different situations. On the other hand,
+  we have not yet devised any machine learning algorithm that 
+  can do this!

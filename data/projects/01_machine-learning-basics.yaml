@@ -1,0 +1,26 @@
+modalID: 1
+title: Machine Learning Basics
+level: Beginner to Intermediate
+img: ml-basics.jpg
+category: Predictive Modelling
+categoryLink: "#contact"
+discipline: "Math & Stats"
+description: >
+    What do machines learn anyway? They learn whatever the programmer tells them
+    they should find in the data. For example, if the programmer tells the machines that 
+    there should be a straight line passing through the data points, then the 
+    machines will go look for the best way to reconcile the data they see 
+    with this claim. They will use a measure of success given to them, in the
+    form of a loss function, and they will keep measuring how successful they 
+    are in reconciling the data with the programmer's claim. 
+    By using a convex optimization method, like Gradient Descent for example, 
+    they work to minimize
+    the loss function in order to make progress towards reconsiling the 
+    programmers claim with the data at hand -- this is called model fitting. 
+    Such dumb minions will never counter the programmer's claim by 
+    proposing something else according to the data, even if the model 
+    does not fit the data at all. They will always form a view of the world
+    that is consistent with the programmer's claim even if the data doesn't
+    fit at all, and they may not appear to be very intelligent when you ask
+    them to make predictions!
+

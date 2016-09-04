@@ -1,0 +1,36 @@
+modalID: 2
+title: Machine Learning Applications
+level: Intermediate to Advanced
+img: ml-applications.jpg
+category: Stories of Brilliance
+categoryLink: "#contact"
+discipline: Applied Math
+description: >
+    Humans continue to come up with all sorts of 
+    objective functions,  loss functions, and learning algorithms
+    which are suitable for different kinds of data. The brilliance
+    of some humans make machines appear to be intelligent, like Alex Krizhevsky
+    et al for example. In [2012](http://books.nips.cc/papers/files/nips25/NIPS2012_0534.pdf), 
+    they came up with a way to get 
+    machines to learn how to identify objects in pictures. 
+    They used an algorithm called Neural Networks, but they did it
+    in a way that will be later known as Deep Learning. They were not
+    the first to do this, and they didn't coin the term Deep Learning;
+    it is just a buzz word that is not well defined after all. The
+    brilliance of their method IMHO was in the way they formulated the 
+    problem to allow their machines to identify an object in a picture 
+    with 10% more accuracy than the machines of the next best participant
+    in the [ImageNet competition](http://image-net.org/challenges/LSVRC/2012/supervision.pdf). 
+    They did that by showing their machines the photos 10 times, and they didn't just
+    show the machines the photos over and over -- they did something very
+    smart. Each time, they showed the machine a different section of each
+    photo, and some times they used a mirror image of the photo. 
+    This allowed their machines to find patterns that generalize better,
+    leading to their accuracy when asked about photos they hadn't seen 
+    before. Of course, their use of a deep neural network is also brilliant,
+    and their implementation was amazing craftsmanship. However, I believe 
+    that their way of passing insights to the machines, through showing it the
+    data many times, is pure mastery in the science of coaching machines. 
+    Notice that they never showed the machines an upside
+    down version of the photos, because this will not help in the task
+    at hand, where images are already right-side-up.
