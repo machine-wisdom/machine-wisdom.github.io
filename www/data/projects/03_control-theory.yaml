@@ -2,8 +2,8 @@ modalID: 3
 title: Alternative Approaches To ML
 level: Intermediate to Advanced
 img: control-theory.jpg
-category: Prescriptive Modelling
-categoryLink: "#contact"
+category: Prescriptive Modeling
+categoryLink: "/blog/categories/prescriptive-modeling/"
 discipline: Control Theory
 description: >
     I think of Machine Learning as a science of taming a wonderful 

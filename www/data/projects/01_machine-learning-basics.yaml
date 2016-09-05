@@ -2,8 +2,8 @@ modalID: 1
 title: Machine Learning Basics
 level: Beginner to Intermediate
 img: ml-basics.jpg
-category: Predictive Modelling
-categoryLink: "#contact"
+category: Predictive Modeling
+categoryLink: "/blog/categories/predictive-modeling/"
 discipline: "Math & Stats"
 description: >
     What do machines learn anyway? They learn whatever the programmer tells them

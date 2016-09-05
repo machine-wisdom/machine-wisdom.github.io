@@ -3,8 +3,8 @@ title: Distributed Systems
 level: Intermediate to Advanced
 img: distributed-systems.jpg
 category: Big Data
-categoryLink: "#contact"
-discipline: Computer Engineering
+categoryLink: "/blog/categories/big-data/"
+discipline: "Distributed Systems"
 description: >
   Share nothing distributed systems are very scalable because they
   have no locks, so workers don't need to wait to acquire a shared
