@@ -98,9 +98,9 @@ theme = "hugo-creative-theme"
 	# Contact section
 	[params.contact]
 		headline = "Let's Get In Touch!"
-		description = "Please [follow us on Twitter](https://twitter.com/machinewisdom) and join our [Gitter community](https://gitter.im/orgs/machine-wisdom/rooms). If you want to discuss a particular blog post, join its discussion room on Gitter. We also love to talk in the Lobby room about Machine Learning, Artificial Intelligence, Distributed Systems, Big Data, and all those topics we are passionate about."
+		description = "Please [follow us on Twitter](https://twitter.com/machine_wisdom) and join our [Gitter community](https://gitter.im/orgs/machine-wisdom/rooms). If you want to discuss a particular blog post, join its discussion room on Gitter. We also love to talk in the Lobby room about Machine Learning, Artificial Intelligence, Distributed Systems, Big Data, and all those topics we are passionate about."
 		gitter = "Machine-wisdom rooms on Gitter"
 		gitterhref = "https://gitter.im/orgs/machine-wisdom/rooms"
-		twitter = "@machinewisdom"
-		twitterhref = "https://twitter.com/machinewisdom"
+		twitter = "@machine_wisdom"
+		twitterhref = "https://twitter.com/machine_wisdom"
 		
