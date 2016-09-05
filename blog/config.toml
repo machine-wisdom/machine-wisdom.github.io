@@ -14,7 +14,7 @@ copyright = "Copyright (c) 2016 Younes Abouelnagah"
   Description = "THE BLOG"
   Author = "Younes Abouelnagah"
   email = "Y O U N E S [at] machine-wisdom.com"
-  Ganalytics = "XX-00000000-0"
+  Ganalytics = "UA-83687834-1"
 
 [[params.social]]
     title = "twitter"
