@@ -23,3 +23,17 @@ popd > /dev/null
 mv www/public .
 
 mv blog/public public/blog
+
+
+# Add changes to git.
+git add -A
+
+# Commit changes.
+msg="Rebuilding site `date`, to be served from the public folder"
+if [ $# -eq 1 ]
+  then msg="$1"
+fi
+git commit -m "$msg"
+
+# Push source and build repos.
+git push origin master

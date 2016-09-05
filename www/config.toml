@@ -63,7 +63,7 @@ theme = "hugo-creative-theme"
 	[params.portfolio.modal]
         discipline = "Discipline"
         level = "Level"
-        category = "Category"
+        category = "Blog posts about"
         buttonText = "Close"
 
     # Aside section

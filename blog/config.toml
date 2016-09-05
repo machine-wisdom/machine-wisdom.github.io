@@ -1,4 +1,4 @@
-baseurl = "http://www.machine-wisdom.com/"
+baseurl = "http://www.machine-wisdom.com/blog/"
 title = "Machine Wisdom"
 canonifyurls = true
 paginate = 10
@@ -25,15 +25,20 @@ copyright = "Copyright (c) 2016 Younes Abouelnagah"
 
 [[menu.main]]
   name = "Archives"
-  url = "/blog/post/"
+  url = "/post/"
   weight = -300
 
 [[menu.main]]
+  name = "Home"
+  url = "//www.machine-wisdom.com/"
+  weight = -400
+
+[[menu.main]]
   name = "MISR"
-  url = "/#aside"
+  url = "//www.machine-wisdom.com/#aside"
   weight = -200
 
 [[menu.main]]
   name = "Join the discussion"
-  url = "/#contact"
+  url = "//www.machine-wisdom.com/#contact"
   weight = -100
