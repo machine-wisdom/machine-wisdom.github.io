@@ -15,7 +15,7 @@ pushd $(dirname "$0") > /dev/null
 
 cd blog
 
-# Build the www part
+# Build the blog part
 hugo
 
 popd > /dev/null
