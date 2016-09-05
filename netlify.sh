@@ -20,6 +20,8 @@ hugo
 
 popd > /dev/null
 
+rm -r public 
+
 mv www/public .
 
 mv blog/public public/blog
