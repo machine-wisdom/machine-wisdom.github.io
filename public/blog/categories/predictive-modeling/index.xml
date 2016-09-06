@@ -6,7 +6,7 @@
     <description>Recent content in Predictive Modeling on Machine Wisdom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2016 Younes Abouelnagah</copyright>
+    <copyright>Copyright (c) 2016 Younes Abouelnagah. All rights reserved.</copyright>
     <lastBuildDate>Sun, 04 Sep 2016 18:53:17 +0600</lastBuildDate>
     <atom:link href="http://www.machine-wisdom.com/blog/categories/predictive-modeling/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,10 +17,10 @@
       
       <guid>http://www.machine-wisdom.com/blog/post/post-01/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;NOTE: If you have read the bits and pieces of text on &lt;a href=&#34;www.machine-wisdom.com&#34;&gt;our homepage&lt;/a&gt;, you have read all the content of this post. I am just putting it all together here in one place.&lt;/p&gt;
+&lt;p&gt;NOTE: If you have read the bits and pieces of text on &lt;a href=&#34;www.machine-wisdom.com&#34;&gt;our homepage&lt;/a&gt;, you have read all the content of this post. I am just putting it all together here in one place. Please &lt;a href=&#34;http://www.twitter.com/machine_wisdom&#34;&gt;follow us on Twitter&lt;/a&gt; and stay tuned for our blog posts. Also, please &lt;a href=&#34;https://gitter.im/orgs/machine-wisdom/rooms&#34;&gt;join the conversation on our Gitter rooms&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;To be wise is to find patterns in what has past to foresee what is yet to become. To be conscious of such patterns, wise people spend a lot of time contemplating and patiently exercising loops of thought that takes them from one idea to another. A computer program can exercise billions of loops in a single wall clock second, allowing it to go through an amount of data that would take years for a human to read. This is the edge machines have in terms of wisdom; they are fast and they don&amp;rsquo;t know boredom.&lt;/p&gt;
+&lt;p&gt;To be wise is to find patterns in what has passed to foresee what is yet to become. To be conscious of such patterns, wise people spend a lot of time contemplating and patiently exercising loops of thought that takes them from one idea to another. A computer program can exercise billions of loops in a single wall clock second, allowing it to go through an amount of data that would take years for a human to read. This is the edge machines have in terms of wisdom; they are fast and they don&amp;rsquo;t know boredom.&lt;/p&gt;
 
 &lt;p&gt;Machines don&amp;rsquo;t have any edge in terms of cognitive capacity, because it is us humans who have to tell them what to do in each iteration of the loop in order to make any progress. Even the notion of progress has to be simplified in order for machines to comprehend it. Machines, of the Von Neumann sort currently prevalent, can only deal with numbers and they are very clever when it comes to comparing something to zero. Humans devised a mathematical trick to allow machines to comprehend progress, only if the goal is to minimize a particular outcome function. This trick is called convex optimization, and it is at the heart of almost all methods that allow machines to learn something from data.&lt;/p&gt;
 
