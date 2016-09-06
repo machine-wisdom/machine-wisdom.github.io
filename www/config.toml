@@ -44,7 +44,7 @@ theme = "hugo-creative-theme"
 	[params.hero]
 		# To change the background of the hero section, replace the 'header.jpg' at './static/img' with your own.
 		slogan     = "Machine Wisdom"
-		subtitle   = "To be wise is to find patterns in what has past to foresee what is yet to become.<br/>To be conscious of such patterns, wise people spend a lot of time contemplating and patiently exercising loops of thought that takes them from one idea to another.<br/>A computer program can exercise billions of loops in a single wall clock second, allowing it to go through an amount of data that would take years for a human to read. This is the edge machines have in terms of wisdom; they are fast and they do not know boredom."
+		subtitle   = "To be wise is to find patterns in what has passed to foresee what is yet to become.<br/>To be conscious of such patterns, wise people spend a lot of time contemplating and patiently exercising loops of thought that takes them from one idea to another.<br/>A computer program can exercise billions of loops in a single wall clock second, allowing it to go through an amount of data that would take years for a human to read. This is the edge machines have in terms of wisdom; they are fast and they do not know boredom."
 		buttonText = "Read more"
 
 
