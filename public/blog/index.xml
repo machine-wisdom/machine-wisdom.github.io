@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Wisdom</title>
+    <link>http://www.machine-wisdom.com/blog/</link>
+    <description>Recent content on Machine Wisdom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016 Younes Abouelnagah. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 15 Sep 2016 05:53:17 +0600</lastBuildDate>
+    <atom:link href="http://www.machine-wisdom.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Getting linear regression to work</title>
+      <link>http://www.machine-wisdom.com/blog/post/002_linear-regression-poor-perf/</link>
+      <pubDate>Thu, 15 Sep 2016 05:53:17 +0600</pubDate>
+      
+      <guid>http://www.machine-wisdom.com/blog/post/002_linear-regression-poor-perf/</guid>
+      <description>
+
+&lt;p&gt;Linear regression is the first model explained in many machine
+learning books, but it is one of the trickiest to use. This post talks about
+two reasons why a linear regressor can be performing poorly, and how to fix
+them. First, let me give my 2 cents about what a linear regressor is doing.
+It is going to be a very brief explanation, but I am sure you can find all
+the details you want on the Internet and in lots of high quality text books.&lt;/p&gt;
+
+&lt;h2 id=&#34;very-brief-explanation-of-linear-regression&#34;&gt;Very brief explanation of linear regression&lt;/h2&gt;
+
+&lt;p&gt;If linear regression is used, the programmer is making a claim
+that the data can be explained by a straight line.
+The regressor tries to find the straight line that passes as close
+as possible to all the known data points.
+The formula of a straight line is &lt;code&gt;y = A.X + b&lt;/code&gt;;
+where &lt;code&gt;y&lt;/code&gt; is a single value representing what we care about predicting (called the target, response or dependent variable),
+and &lt;code&gt;X&lt;/code&gt; is a vector encapsulating all the signals we can measure on which the value of &lt;code&gt;y&lt;/code&gt; depends (what the programmer believes to be important features). The regressor finds the values of the weight vector &lt;code&gt;A&lt;/code&gt; and the intercept &lt;code&gt;b&lt;/code&gt;, which &lt;em&gt;best fit the data&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The lines &lt;em&gt;fits the data&lt;/em&gt; better if the loss function is smaller. The loss
+function used in linear regression is the Sum of Squared Errors (SSE),
+which is calculated by going through all the training data points,
+substituting the values of the features in &lt;code&gt;X&lt;/code&gt; to get the estimated &lt;code&gt;y&lt;/code&gt;,
+finding the differences between the estimate and the observed value of &lt;code&gt;y&lt;/code&gt; (according to the data),
+squaring this difference (for various reasons that are beyond the scope of this post),
+and finally aggregating those squared differences by summing them.
+The regressor can only change the values of the weight vector &lt;code&gt;A&lt;/code&gt; and the
+intercept &lt;code&gt;b&lt;/code&gt; (which is basically the weight of a feature that always has the
+value of 1).
+It goes into a loop and iterates on the values of the weights until it
+reaches the best weights it can get.
+In each iteration, the learning algorithm changes the weights by adding or subtracting a
+small value (called the learning rate) from some of them. The choice
+of which weight to change at each iteration varies from one regression algorithm to another,
+but they all need the value of &lt;code&gt;y&lt;/code&gt; to change gradually when changing the weights. This leads us to the situations I wanted to talk about.&lt;/p&gt;
+
+&lt;h2 id=&#34;feature-encoding-for-better-linear-regression&#34;&gt;Feature encoding for better linear regression&lt;/h2&gt;
+
+&lt;p&gt;In this section we will use a toy example problem where a linear regression
+model is built to predict the sales in a given future date. The only data we
+have is the sales of the preceding 12 months, recorded as &lt;code&gt;(timestamp of sale, sale amount)&lt;/code&gt;.
+The sale amount is the target variable, and it is recorded in some well defined unit already.
+The only other variable we have is the time of the sale, recorded as
+a Linux epoch timestamp.&lt;/p&gt;
+
+&lt;p&gt;A regressor tries to find weights such that the amount of sales can be predicted by multiplying those weights by the features.
+We are starting with a very accurate time of sale, down to the millisecond.
+However, if we try to train a regressor on this data it will likely fail miserably.
+The programmer needs to tell the regressor how to interpret this ever increasing value to &lt;a href=&#34;https://github.com/machine-wisdom/misr/blob/master/feature-extraction/scala/time-feature-extraction/Day%20of%20year%20time%20features%20for%20working%20people.ipynb&#34;&gt;extract meaningful features out of it&lt;/a&gt;.
+We humans understand that a point in time represents some time of day,
+in a day, in a month of a year. It can be a work day or a day off,
+and this varies by the country in which the sale happened.
+A programmer can extract all those features, but let&amp;rsquo;s just extract the month and the year. Now the question is how to encode them?&lt;/p&gt;
+
+&lt;h3 id=&#34;one-hot-encoding&#34;&gt;One hot encoding&lt;/h3&gt;
+
+&lt;p&gt;A regressor treats all features as continuous ordinal variables,
+because it needs to be able to multiply the value of the features
+by some weights and sum the results to get the value of the target variable.
+It is obvious that a categorical variable such as gender cannot
+be encoded as 0, 1, 2 and 3 for example. Think about what happens if
+we assign the gender correlated with the highest values of the reponse
+to be encoded as the value 0. Also, gender is not ordinal and the values
+0, 1, 2, 3 are ordinal. This is solved by something called one-hot encoding.
+Basically, create a feature for each possible category, and for each
+data point set the feature corresponding to the category of this point
+to 1 and set the others to 0. You can read more about this in many sources.&lt;/p&gt;
+
+&lt;p&gt;What I want to cover is the effectiveness of one hot encoding in the case of
+seemingly ordinal variables, such as the month. Well, I think you will get
+it by just posing an example of how a regressor will fail without it.
+Back to our toy example, imagine that the sales data come from a mountain
+resort so the values are high in the summer and winter months (hiking and skiing).
+Now, what will happen if we encode the month as a number from 1 to 12
+and ask the regressor to find a weight for it? It will miserably fail,
+because it will not be able to find a weight to use which gives a high
+value for the response only when the month is 1, 2, 3, 6, 7 or 8.
+Using one hot encoding of the month the regressor can easily find a weight
+for each month.&lt;/p&gt;
+
+&lt;h3 id=&#34;feature-normalization&#34;&gt;Feature normalization&lt;/h3&gt;
+
+&lt;p&gt;The second reason a linear regressor can fail to find suitable weights
+is having high variability in the ranges of values of different features.
+In our toy example, the one-hot encoded month takes values between 0 and 1,
+while the year takes values around 2000. What&amp;rsquo;s wrong with that?
+Well, for a poor regressor trying to find some weights by modifying them iteratively there are two problems.
+First, slight changes to the weight of the year feature causes
+changes to the value of the response variable that are much larger than
+the other variables.
+This can make the regressor diverge or at least fail to converge.
+Second, even in case of convergence, the value of the weights will not
+be representative of the relative importance of the different features,
+since some weights are multiplied by a value from 0 to 1 and other weights
+are multiplied by a value around 2000.
+The value of the weight of a feature whose values are very large compared
+to the response can also get too small that it can cause numerical instabilities.&lt;/p&gt;
+
+&lt;p&gt;The solution to this problem is normalizing all features, such that each
+feature has a value from 0 to 1, or from -1 to 1, or something like that.
+Features can be normalized in several ways, such as subtracting the minimum and dividing by the (maximum - minimum), or standardization.
+In the case of the year feature in our toy example, we can subtract the minimum year and divide by the age of the mountain resort.
+This gives us a feature whose weight will reflect the trend of sales.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I hope I have given you some insight about how linear regression works
+and how to massage the data to get it do a better job. This is by no means
+a sufficient introduction to linear regression, and a proper text book
+should be consulted. There are other pitfalls, such as including multiple
+correlated features in the model, which are not as easy to explain but
+they make a lot of sense (how to divide the weight capturing the effect
+ of two correlated features between them?). Please &lt;a href=&#34;https://gitter.im/machine-wisdom/blog-discussion_002_getting-linear-regression-to-work&#34;&gt;join the discussion
+ about this blog post on Gitter&lt;/a&gt;, and share with us
+ any other pitfalls or insights. Needless to say, if you see a mistake
+ in my blog post or if you really like it, please give me feedback about it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introducing Machine Wisdom</title>
+      <link>http://www.machine-wisdom.com/blog/post/001_intro-to-machine-wisdom/</link>
+      <pubDate>Sun, 04 Sep 2016 18:53:17 +0600</pubDate>
+      
+      <guid>http://www.machine-wisdom.com/blog/post/001_intro-to-machine-wisdom/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;NOTE: If you have read the bits and pieces of text on &lt;a href=&#34;www.machine-wisdom.com&#34;&gt;our homepage&lt;/a&gt;, you have read all the content of this post. I am just putting it all together here in one place. Please &lt;a href=&#34;http://www.twitter.com/machine_wisdom&#34;&gt;follow us on Twitter&lt;/a&gt; and stay tuned for our blog posts. Also, please &lt;a href=&#34;https://gitter.im/orgs/machine-wisdom/rooms&#34;&gt;join the conversation on our Gitter rooms&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To be wise is to find patterns in what has passed to foresee what is yet to become. To be conscious of such patterns, wise people spend a lot of time contemplating and patiently exercising loops of thought that takes them from one idea to another. A computer program can exercise billions of loops in a single wall clock second, allowing it to go through an amount of data that would take years for a human to read. This is the edge machines have in terms of wisdom; they are fast and they don&amp;rsquo;t know boredom.&lt;/p&gt;
+
+&lt;p&gt;Machines don&amp;rsquo;t have any edge in terms of cognitive capacity, because it is us humans who have to tell them what to do in each iteration of the loop in order to make any progress. Even the notion of progress has to be simplified in order for machines to comprehend it. Machines, of the Von Neumann sort currently prevalent, can only deal with numbers and they are very clever when it comes to comparing something to zero. Humans devised a mathematical trick to allow machines to comprehend progress, only if the goal is to minimize a particular outcome function. This trick is called convex optimization, and it is at the heart of almost all methods that allow machines to learn something from data.&lt;/p&gt;
+
+&lt;p&gt;What do machines learn anyway? They learn whatever the programmer tells them they should find in the data. For example, if the programmer tells the machines that there should be a straight line passing through the data points, then the machines will go look for the best way to reconcile the data they see with this claim. They will use a measure of success given to them, in the form of a loss function, and they will keep measuring how successful they are in reconciling the data with the programmer&amp;rsquo;s claim. By using convex optimization methods, like Gradient Descent for example, they work to minimize the loss function in order to make progress towards reconciling the programmers claim with the data at hand &amp;ndash; this is called model fitting. Such dumb minions will never counter the programmer&amp;rsquo;s claim by proposing something else according to the data, even if the model does not fit the data at all. They will always form a view of the world that is consistent with the programmer&amp;rsquo;s claim even if the data doesn&amp;rsquo;t fit at all, and they will not appear to be very intelligent when you ask them to make predictions!&lt;/p&gt;
+
+&lt;p&gt;Luckily, humans continue to come up with all sorts of objective functions, loss functions, and learning algorithms which are suitable for different kinds of data. The brilliance of some humans make machines appear to be intelligent, like Alex Krizhevsky et al. for example. In &lt;a href=&#34;http://books.nips.cc/papers/files/nips25/NIPS2012_0534.pdf&#34;&gt;2012&lt;/a&gt;,
+they came up with a way to get machines to learn how to identify objects in pictures. They used an algorithm called Neural Networks, but they did it in a way that will be later known as Deep Learning. They were not the first to do this, and they didn&amp;rsquo;t coin the term Deep Learning; it is just a buzz word that is not well defined after all. The brilliance of their method IMHO was in the way they formulated the problem to allow their machines to identify an object in a picture with 10% more accuracy than the machines of the next best participant in the &lt;a href=&#34;http://image-net.org/challenges/LSVRC/2012/supervision.pdf&#34;&gt;ImageNet competition&lt;/a&gt;. They did that by showing their machines the photos 10 times, and they didn&amp;rsquo;t just show the machines the photos over and over &amp;ndash; they did something very smart. Each time, they showed the machine a different section of each photo, and some times they used a mirror image of the photo. This allowed their machines to find patterns that generalize better, leading to their accuracy when asked about photos they hadn&amp;rsquo;t seen before. Of course, their use of a deep neural network is also brilliant, and their implementation was amazing craftsmanship. However, I believe that their way of passing insights to the machines, through showing it the data many times, is pure mastery in &amp;ldquo;the science of coaching machines&amp;rdquo;. Notice that they never showed the machines an upside down version of the photos, because this will not help in the task at hand, where images are already right-side-up.&lt;/p&gt;
+
+&lt;p&gt;I think of Machine Learning as a science of taming a wonderful tool, to get it to do something amazing by repeating simple steps. The repetition and the faithfulness of the machines to whatever the programmer tells them makes the process reminiscent to the process of following a Zen-Master to achieve a wisdom of sorts. It is such a beautiful and romantic analogy, specially that lots of programmers (myself included) would love to think of themselves as Zen-Masters. But, I&amp;rsquo;d rather get down to reality and call things with what they really are; it is a control system. Well, it is a very special one, because it is not grounded in Control Theory. Actually, it seems that multiple disciplines have been approaching the same problem from different angles and they finally converged into a new science that is yet to be named.&lt;/p&gt;
+
+&lt;p&gt;Another contributor to the great success of machines to acquire wisdom is the innovation in Distributed Systems, spearheaded by Google since the early 2000s. Earlier I claimed that machines look into data and find patterns using very simple repetitive loops, crafted by humans to make the task mind numbingly simple. The strength point of machines is the speed by which they can attain this wisdom, specially if they are working together in a distributed system. This speed allows machines to go through Billions of observations in seconds, growing their collective conscious by an amount equivalent to the growth of a human in several years of persistent studying. This scalability became possible because of a simplification of distributed systems that require algorithm programmers to be even more crafty in developing their algorithms. For an algorithm to be scalable it has to be written in a way such that multiple worker machines can make progress independently, sharing nothing.&lt;/p&gt;
+
+&lt;p&gt;Share nothing distributed systems are very scalable because they have no locks, so workers don&amp;rsquo;t need to wait to acquire a shared resource. The first such system to become main stream is the Map/Reduce processing framework, which was published by Google in a &lt;a href=&#34;http://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf&#34;&gt;2004&lt;/a&gt; paper and then later adopted in the &lt;a href=&#34;http://hadoop.apache.org/&#34;&gt;Apache Hadoop&lt;/a&gt; open source project. The strength of Map/Reduce lies in how workers are spawned on the machines containing the data, thus reducing the need to move data back and forth. More modern Map/Reduce frameworks like Apache Spark reduces the disk and network I/O overhead even further, specially for iterative workloads. This allows programmers to implement machine learning algorithms efficiently on Spark, shifting the role of the Hadoop eco-system from being more of a data preparation tool-set to being an end-to-end toolbox for creating machine wisdom applications.&lt;/p&gt;
+
+&lt;p&gt;The last sentence intentionally uses &amp;ldquo;machine wisdom applications&amp;rdquo; as if it is really something, in a tongue-in-cheek fashion. I don&amp;rsquo;t want to coin a term, but I also hope that you have found it as acceptable as &amp;ldquo;machine intelligence&amp;rdquo;, &amp;ldquo;artificial intelligence&amp;rdquo;, &amp;ldquo;machine cognition&amp;rdquo;, or any other such terms that we learned to accept. I believe that &amp;ldquo;wisdom&amp;rdquo; is more accurate than &amp;ldquo;intelligence&amp;rdquo; for describing the cognitive capacity of machines, or rather the lack thereof. I love artificial intelligence, machine learning, data mining, statistical modeling, and whatever else you could call the family of algorithms that leads to getting machines to do something that the programmer did not actually code. I don&amp;rsquo;t care what they are called as long as people realize they are just metaphors. It helps if people remember that all such algorithms can very easily fall into the pitfall of &amp;ldquo;over fitting&amp;rdquo; the training data, which renders what they learn useless when they are evaluated on new data points. Much like a wise shaman who has never left the village, and while the wisdom is perfect for leading life in the village it is not generally applicable. The difference is that the shaman has intelligence and may be able to rectify the wisdom to be more applicable to different situations. On the other hand, we have not yet devised any machine learning algorithm that can do this!&lt;/p&gt;
+
+&lt;p&gt;Please &lt;a href=&#34;http://www.twitter.com/machine_wisdom&#34;&gt;follow us on Twitter&lt;/a&gt; and stay tuned for our blog posts. Also, please &lt;a href=&#34;https://gitter.im/orgs/machine-wisdom/rooms&#34;&gt;join the conversation on our Gitter rooms&lt;/a&gt;. You can &lt;a href=&#34;https://gitter.im/machine-wisdom/blog-comments_001_introducting-machine-wisdom&#34;&gt;comment about this blog post on its Gitter room&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
