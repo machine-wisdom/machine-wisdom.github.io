@@ -1,3 +1,0 @@
-orange: #f05f40 #666e97 #afadaf rgba(240,95,64,.9)
-teal: #6882a3 #3c587b #3c587b rgba(104,130,163,0.9)
-offwhite: #afadaf
